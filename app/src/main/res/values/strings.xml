@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">息屏</string>
+    <string name="app_tagline">ANDROID 14 · ONE TAP TO DIM</string>
+    <string name="dial_caption">轻触圆环，屏幕立即熄灭</string>
+
+    <string name="status_ready_accessibility">已就绪 · 无障碍服务</string>
+    <string name="status_ready_admin">已就绪 · 设备管理员</string>
+    <string name="status_missing">尚未开启熄屏权限 · 点此设置</string>
+    <string name="status_stale">无障碍服务未连接 · 点此修复</string>
+
+    <string name="row_method">锁定方式</string>
+    <string name="row_method_sub">决定用哪种系统能力关闭屏幕</string>
+    <string name="row_tile">快捷设置磁贴</string>
+    <string name="row_tile_sub">下拉控制中心，一点即熄屏</string>
+    <string name="row_floating">悬浮球</string>
+    <string name="row_floating_sub">在任意界面轻点悬浮球熄屏</string>
+    <string name="row_floating_locked">需先开启无障碍服务</string>
+    <string name="row_tile_action">添加</string>
+    <string name="footnote">长按桌面图标可直接熄屏 · 全程离线，不收集任何数据</string>
+
+    <string name="method_value_auto_accessibility">自动 · 无障碍</string>
+    <string name="method_value_auto_admin">自动 · 管理员</string>
+    <string name="method_value_accessibility">无障碍服务</string>
+    <string name="method_value_admin">设备管理员</string>
+    <string name="method_value_accessibility_fallback">无障碍未连接 · 已回退</string>
+    <string name="method_value_admin_fallback">管理员未启用 · 已回退</string>
+    <string name="method_value_none">未设置</string>
+
+    <string name="setup_title">开启熄屏</string>
+    <string name="setup_body">关闭屏幕需要一项系统授权，任选一种即可，随时可以撤销。</string>
+    <string name="setup_accessibility_title">无障碍服务</string>
+    <string name="setup_accessibility_desc">推荐。无需设备管理员，还能同时启用悬浮球；只执行系统锁屏动作，不读取屏幕内容。</string>
+    <string name="setup_accessibility_badge">推荐</string>
+    <string name="setup_admin_title">设备管理员</string>
+    <string name="setup_admin_desc">只授予「锁定屏幕」一项权限，不涉及擦除数据、密码等能力。</string>
+    <string name="setup_action_open">去开启</string>
+    <string name="setup_action_done">已开启</string>
+    <string name="setup_state_on">已开启</string>
+    <string name="setup_state_off">未开启</string>
+    <string name="setup_close">关闭</string>
+    <string name="setup_already_on">已开启，可在设置里撤销</string>
+    <string name="setup_note">「息屏」不会联网，也没有读取屏幕、剪贴板或存储的权限。</string>
+    <string name="setup_accessibility_hint">请在系统「无障碍 → 已下载的应用」中找到「息屏」并开启。</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_method_label">锁定方式</string>
+    <string name="settings_method_auto">自动</string>
+    <string name="settings_method_auto_sub">优先无障碍，不可用时回退设备管理员</string>
+    <string name="settings_method_accessibility">无障碍服务</string>
+    <string name="settings_method_accessibility_sub">通过系统全局操作熄屏</string>
+    <string name="settings_method_admin">设备管理员</string>
+    <string name="settings_method_admin_sub">通过 DevicePolicyManager.lockNow() 熄屏</string>
+    <string name="settings_haptics">触感反馈</string>
+    <string name="settings_haptics_sub">点击圆环时给出轻微振动</string>
+    <string name="settings_floating">悬浮球</string>
+    <string name="settings_floating_sub">需要在无障碍服务中开启</string>
+    <string name="settings_revoke_admin">撤销设备管理员</string>
+    <string name="settings_revoke_admin_sub">撤销后仍可使用无障碍方式熄屏</string>
+    <string name="settings_version">息屏 1.0.0 · targetSdk 34</string>
+    <string name="settings_about">设计给 Android 14 的一键熄屏工具</string>
+
+    <string name="tile_label">熄屏</string>
+    <string name="tile_description">轻点立即关闭屏幕</string>
+    <string name="toast_no_method">请先开启一项熄屏权限</string>
+    <string name="toast_lock_failed">熄屏失败，请检查权限后重试</string>
+    <string name="toast_tile_added">磁贴已添加到控制中心</string>
+    <string name="toast_tile_exists">磁贴已在控制中心里</string>
+    <string name="toast_tile_failed">无法自动添加，请手动编辑控制中心</string>
+    <string name="toast_tile_unsupported">当前系统不支持自动添加，请手动编辑控制中心</string>
+    <string name="toast_admin_enabled">设备管理员已启用</string>
+    <string name="toast_admin_revoked">已撤销设备管理员</string>
+
+    <string name="shortcut_short">立即熄屏</string>
+    <string name="shortcut_long">立即熄屏</string>
+    <string name="shortcut_disabled">请先开启熄屏权限</string>
+
+    <string name="dial_description">熄屏按钮</string>
+    <string name="toast_floating_need_service">无障碍服务未连接，请在系统设置里重新开启</string>
+    <string name="revoke_title">撤销设备管理员？</string>
+    <string name="revoke_message">撤销后设备管理员方式将不可用；无障碍方式不受影响。</string>
+    <string name="revoke_confirm">撤销</string>
+    <string name="cancel">取消</string>
+
+    <string name="accessibility_label">息屏（锁屏服务）</string>
+    <string name="accessibility_description">允许「息屏」在任意界面执行系统锁屏动作。该服务不会读取屏幕内容，也不会收集或上传任何信息。</string>
+    <string name="admin_label">息屏 · 设备管理员</string>
+    <string name="admin_description">允许「息屏」锁定屏幕。仅使用 force-lock 一项策略。</string>
+    <string name="admin_explanation">「息屏」需要「锁定屏幕」权限，才能在你点击圆环或磁贴时立即关闭屏幕。</string>
+    <string name="admin_disable_warning">关闭后，「息屏」将无法通过设备管理员方式关闭屏幕。</string>
+    <string name="floating_description">熄屏悬浮球</string>
+    <string name="cd_settings">设置</string>
+</resources>

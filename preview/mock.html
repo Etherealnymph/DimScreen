@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>息屏 · 设计预览</title>
+<style>
+  :root{
+    --bg-top:#06070B; --bg-bottom:#0C121C;
+    --surface:#121A25; --stroke:rgba(255,255,255,.12); --stroke-soft:rgba(255,255,255,.07);
+    --text:#F3F6F9; --text2:#93A0B4; --text3:#5F6C7E;
+    --accent:#74E8C8; --warn:#E7B778; --ink:#08120F;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:#030407;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",-apple-system,sans-serif;
+    display:flex; align-items:flex-start; justify-content:flex-start;
+    min-height:0; padding:10px; gap:30px; zoom:.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .phone{
+    position:relative; width:393px; height:852px; border-radius:44px; overflow:hidden;
+    background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+    box-shadow:0 0 0 10px #0b0d12, 0 0 0 11px #1c2230, 0 40px 80px rgba(0,0,0,.6);
+    flex:0 0 auto; display:flex; flex-direction:column;
+  }
+  .phone::before,.phone::after{content:""; position:absolute; border-radius:50%; pointer-events:none;}
+  .phone::before{width:560px; height:560px; right:-190px; top:-210px;
+    background:radial-gradient(circle, rgba(116,232,200,.20), rgba(116,232,200,.06) 45%, transparent 70%);}
+  .phone::after{width:520px; height:520px; left:-210px; bottom:-230px;
+    background:radial-gradient(circle, rgba(53,87,200,.18), rgba(53,87,200,.05) 48%, transparent 72%);}
+  .statusbar{
+    position:relative; z-index:2; height:44px; padding:0 26px;
+    display:flex; align-items:center; justify-content:space-between;
+    color:var(--text); font-size:13px; font-weight:600; letter-spacing:.2px;
+  }
+  .statusbar .icons{display:flex; align-items:center; gap:5px; opacity:.9;}
+  .bars{display:flex; align-items:flex-end; gap:2px; height:11px;}
+  .bars i{width:3px; background:var(--text); border-radius:1px; display:block;}
+  .bars i:nth-child(1){height:4px}.bars i:nth-child(2){height:6px}
+  .bars i:nth-child(3){height:8px}.bars i:nth-child(4){height:11px}
+  .battery{width:23px; height:11px; border:1px solid rgba(255,255,255,.6); border-radius:3px; position:relative;}
+  .battery::before{content:""; position:absolute; inset:1.5px; right:7px; background:var(--text); border-radius:1px;}
+  .battery::after{content:""; position:absolute; right:-3px; top:3px; width:2px; height:5px; background:rgba(255,255,255,.6); border-radius:1px;}
+
+  .content{position:relative; z-index:2; flex:1; padding:6px 22px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .header{width:100%; display:flex; align-items:center; justify-content:space-between;}
+  .title{font-size:30px; font-weight:300; color:var(--text); letter-spacing:1.2px;}
+  .tagline{margin-top:6px; font-size:10px; letter-spacing:2.9px; color:var(--text3);}
+  .gear{
+    width:46px; height:46px; display:flex; align-items:center; justify-content:center;
+    border-radius:50%; color:#C9D4E0;
+  }
+  .dial{position:relative; width:244px; height:244px; margin-top:24px; display:flex; align-items:center; justify-content:center;}
+  .halo{position:absolute; inset:-12px; border-radius:50%;
+    background:radial-gradient(circle, rgba(116,232,200,.26), rgba(116,232,200,.08) 55%, transparent 72%);
+    filter:blur(2px);}
+  .ring{position:absolute; width:224px; height:224px; border-radius:50%; border:1px solid rgba(255,255,255,.12);}
+  .arc{position:absolute; width:224px; height:224px; border-radius:50%;
+    background:conic-gradient(from 265deg, transparent 0deg, rgba(116,232,200,0) 80deg, rgba(116,232,200,.95) 150deg, transparent 205deg);
+    -webkit-mask:radial-gradient(circle, transparent 110px, #000 111px);
+            mask:radial-gradient(circle, transparent 110px, #000 111px);
+    filter:drop-shadow(0 0 6px rgba(116,232,200,.45));}
+  .disc{position:relative; width:176px; height:176px; border-radius:50%;
+    background:radial-gradient(circle at 50% 34%, rgba(255,255,255,.17), rgba(255,255,255,.06) 55%, rgba(255,255,255,.02) 100%);
+    border:1px solid rgba(255,255,255,.10);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 18px 40px rgba(0,0,0,.35);}
+  .caption{margin-top:2px; font-size:13.5px; color:var(--text2); letter-spacing:.3px;}
+  .chip{
+    margin-top:16px; height:36px; padding:0 14px; border-radius:20px;
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08);
+    color:var(--text2); font-size:11.5px;
+  }
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px rgba(116,232,200,.8);}
+  .dot.warn{background:var(--warn); box-shadow:0 0 8px rgba(231,183,120,.7);}
+
+  .card{margin-top:26px; width:100%; background:rgba(18,26,37,.88); border:1px solid var(--stroke);
+    border-radius:22px; padding:6px; backdrop-filter:blur(6px);}
+  .row{display:flex; align-items:center; min-height:64px; padding:9px 10px; border-radius:16px;}
+  .row + .row{position:relative;}
+  .row + .row::before{content:""; position:absolute; left:58px; right:10px; top:0; height:1px; background:rgba(255,255,255,.06);}
+  .row .ico{width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.07);
+    display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .row .txt{margin-left:14px; flex:1;}
+  .row .t{font-size:14px; color:var(--text);}
+  .row .s{margin-top:3px; font-size:11px; color:var(--text3);}
+  .row .a{font-size:11.5px; color:var(--text2); display:flex; align-items:center; gap:3px;}
+  .row .a.accent{color:var(--accent); font-size:12px;}
+  .chev{width:7px; height:7px; border-right:1.5px solid var(--text3); border-top:1.5px solid var(--text3); transform:rotate(45deg); margin-left:2px;}
+  .switch{width:38px; height:22px; border-radius:11px; background:rgba(255,255,255,.14); position:relative; flex:0 0 auto;}
+  .switch::after{content:""; position:absolute; width:16px; height:16px; border-radius:50%; background:#C9D4E0; top:3px; left:3px;}
+  .switch.on{background:rgba(116,232,200,.55);}
+  .switch.on::after{left:19px; background:#08120F;}
+  .footnote{margin-top:18px; text-align:center; font-size:10.5px; line-height:1.6; color:var(--text3);}
+
+  /* 第二屏：底部授权面板 */
+  .scrim{position:absolute; inset:0; background:rgba(2,4,8,.62); z-index:3;}
+  .sheet{
+    position:absolute; z-index:4; left:0; right:0; bottom:0;
+    background:#0B111A; border-top:1px solid var(--stroke);
+    border-radius:28px 28px 0 0; padding:12px 20px 22px;
+    box-shadow:0 -24px 60px rgba(0,0,0,.55);
+  }
+  .handle{width:36px; height:4px; border-radius:2px; background:rgba(255,255,255,.16); margin:2px auto 0;}
+  .sheet h2{margin-top:20px; font-size:22px; font-weight:300; color:var(--text);}
+  .sheet .body{margin-top:8px; font-size:12.5px; line-height:1.65; color:var(--text2);}
+  .opt{margin-top:20px; border:1px solid var(--stroke); border-radius:18px; padding:16px; background:#0E151F;}
+  .opt.on{border-color:rgba(116,232,200,.45); background:#0F201C;}
+  .opt .head{display:flex; align-items:center;}
+  .opt .name{font-size:15px; color:var(--text);}
+  .badge{margin-left:8px; font-size:9.5px; color:var(--accent); background:rgba(116,232,200,.16);
+    padding:3px 8px; border-radius:6px;}
+  .opt .state{margin-left:auto; font-size:11px; color:var(--text3);}
+  .opt .desc{margin-top:8px; font-size:11.5px; line-height:1.6; color:var(--text2);}
+  .opt .act{margin-top:12px; font-size:12px; color:var(--accent);}
+  .sheet .note{margin-top:16px; font-size:10.5px; line-height:1.55; color:var(--text3);}
+  .sheet .close{margin-top:12px; text-align:center; font-size:12px; color:var(--text2); padding:10px 0 2px;}
+  .label{display:none;}
+  .frame{position:relative;}
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <div class="phone">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span class="icons">
+        <span class="bars"><i></i><i></i><i></i><i></i></span>
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="#F3F6F9"><path d="M7.5 9.6 1 3.2A9.2 9.2 0 0 1 14 3.2L7.5 9.6Z" opacity=".9"/></svg>
+        <span class="battery"></span>
+      </span>
+    </div>
+
+    <div class="content">
+      <div class="header">
+        <div>
+          <div class="title">息屏</div>
+          <div class="tagline">ANDROID 14 · ONE TAP TO DIM</div>
+        </div>
+        <div class="gear">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9D4E0" stroke-width="1.6" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+            <circle cx="9" cy="7" r="1.9" fill="#F3F6F9" stroke="none"/>
+            <circle cx="15" cy="12" r="1.9" fill="#F3F6F9" stroke="none"/>
+            <circle cx="11" cy="17" r="1.9" fill="#F3F6F9" stroke="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="dial">
+        <div class="halo"></div>
+        <div class="ring"></div>
+        <div class="arc"></div>
+        <div class="disc">
+          <svg width="70" height="70" viewBox="0 0 70 70" fill="none" stroke="#EAF7F2" stroke-width="3.4" stroke-linecap="round">
+            <path d="M35 12v20"/>
+            <path d="M50.5 18.5a22 22 0 1 1-31 0"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="caption">轻触圆环，屏幕立即熄灭</div>
+
+      <div class="chip"><span class="dot"></span>已就绪 · 无障碍服务</div>
+
+      <div class="card">
+        <div class="row">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#74E8C8" stroke-width="1.6" stroke-linejoin="round">
+              <rect x="4.8" y="11" width="14.4" height="8.6" rx="1.8"/>
+              <path d="M8.7 11V8.5a3.3 3.3 0 0 1 6.6 0V11" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="txt"><div class="t">锁定方式</div><div class="s">决定用哪种系统能力关闭屏幕</div></div>
+          <div class="a">自动 · 无障碍<span class="chev"></span></div>
+        </div>
+        <div class="row">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9FEBD8" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M6 6h4v4H6zM14 6h4v4h-4zM6 14h4v4H6zM14 14h4v4h-4z"/>
+            </svg>
+          </div>
+          <div class="txt"><div class="t">快捷设置磁贴</div><div class="s">下拉控制中心，一点即熄屏</div></div>
+          <div class="a accent">添加</div>
+        </div>
+        <div class="row">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9FEBD8" stroke-width="1.5">
+              <circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="1.8" fill="#74E8C8" stroke="none"/>
+            </svg>
+          </div>
+          <div class="txt"><div class="t">悬浮球</div><div class="s">在任意界面轻点悬浮球熄屏</div></div>
+          <div class="switch on"></div>
+        </div>
+      </div>
+
+      <div class="footnote">长按桌面图标可直接熄屏 · 全程离线，不收集任何数据</div>
+    </div>
+  </div>
+  <div class="label">主界面</div>
+</div>
+
+<div class="frame">
+  <div class="phone">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span class="icons">
+        <span class="bars"><i></i><i></i><i></i><i></i></span>
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="#F3F6F9"><path d="M7.5 9.6 1 3.2A9.2 9.2 0 0 1 14 3.2L7.5 9.6Z" opacity=".9"/></svg>
+        <span class="battery"></span>
+      </span>
+    </div>
+
+    <div class="content">
+      <div class="header">
+        <div>
+          <div class="title">息屏</div>
+          <div class="tagline">ANDROID 14 · ONE TAP TO DIM</div>
+        </div>
+        <div class="gear">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9D4E0" stroke-width="1.6" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+            <circle cx="9" cy="7" r="1.9" fill="#F3F6F9" stroke="none"/>
+            <circle cx="15" cy="12" r="1.9" fill="#F3F6F9" stroke="none"/>
+            <circle cx="11" cy="17" r="1.9" fill="#F3F6F9" stroke="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="dial">
+        <div class="halo"></div>
+        <div class="ring"></div>
+        <div class="arc"></div>
+        <div class="disc">
+          <svg width="70" height="70" viewBox="0 0 70 70" fill="none" stroke="#EAF7F2" stroke-width="3.4" stroke-linecap="round">
+            <path d="M35 12v20"/>
+            <path d="M50.5 18.5a22 22 0 1 1-31 0"/>
+          </svg>
+        </div>
+      </div>
+      <div class="caption">轻触圆环，屏幕立即熄灭</div>
+      <div class="chip"><span class="dot warn"></span>尚未开启熄屏权限 · 点此设置</div>
+    </div>
+
+    <div class="scrim"></div>
+    <div class="sheet">
+      <div class="handle"></div>
+      <h2>开启熄屏</h2>
+      <div class="body">关闭屏幕需要一项系统授权，任选一种即可，随时可以撤销。</div>
+
+      <div class="opt">
+        <div class="head">
+          <span class="name">无障碍服务</span>
+          <span class="badge">推荐</span>
+          <span class="state">未开启</span>
+        </div>
+        <div class="desc">无需设备管理员，还能同时启用悬浮球；只执行系统锁屏动作，不读取屏幕内容。</div>
+        <div class="act">去开启 ›</div>
+      </div>
+
+      <div class="opt">
+        <div class="head">
+          <span class="name">设备管理员</span>
+          <span class="state">未开启</span>
+        </div>
+        <div class="desc">只授予「锁定屏幕」一项权限，不涉及擦除数据、密码等能力。</div>
+        <div class="act">去开启 ›</div>
+      </div>
+
+      <div class="note">「息屏」不会联网，也没有读取屏幕、剪贴板或存储的权限。</div>
+      <div class="close">关闭</div>
+    </div>
+  </div>
+  <div class="label">授权引导</div>
+</div>
+
+</body>
+</html>

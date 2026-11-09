@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dim</string>
+    <string name="app_tagline">ANDROID 14 · ONE TAP TO DIM</string>
+    <string name="dial_caption">Tap the ring to turn the screen off</string>
+
+    <string name="status_ready_accessibility">Ready · Accessibility</string>
+    <string name="status_ready_admin">Ready · Device admin</string>
+    <string name="status_missing">Not armed yet · Tap to set up</string>
+    <string name="status_stale">Accessibility not connected · Tap to fix</string>
+
+    <string name="row_method">Lock method</string>
+    <string name="row_method_sub">Which system capability turns the screen off</string>
+    <string name="row_tile">Quick Settings tile</string>
+    <string name="row_tile_sub">One tap from the notification shade</string>
+    <string name="row_floating">Floating ball</string>
+    <string name="row_floating_sub">Tap it anywhere to dim</string>
+    <string name="row_floating_locked">Enable the accessibility service first</string>
+    <string name="row_tile_action">Add</string>
+    <string name="footnote">Long-press the app icon to dim · fully offline, no data collected</string>
+
+    <string name="method_value_auto_accessibility">Auto · Accessibility</string>
+    <string name="method_value_auto_admin">Auto · Admin</string>
+    <string name="method_value_accessibility">Accessibility</string>
+    <string name="method_value_admin">Device admin</string>
+    <string name="method_value_accessibility_fallback">Accessibility offline · fallback</string>
+    <string name="method_value_admin_fallback">Admin inactive · fallback</string>
+    <string name="method_value_none">Not set</string>
+
+    <string name="setup_title">Arm screen-off</string>
+    <string name="setup_body">Android needs one system grant before an app may turn the display off. Pick either one; both can be revoked later.</string>
+    <string name="setup_accessibility_title">Accessibility service</string>
+    <string name="setup_accessibility_desc">Recommended. No device admin, and it also powers the floating ball. It only performs the system lock action and never reads the screen.</string>
+    <string name="setup_accessibility_badge">Recommended</string>
+    <string name="setup_admin_title">Device admin</string>
+    <string name="setup_admin_desc">Grants only “force lock”. No wipe, no password, no other policy.</string>
+    <string name="setup_action_open">Enable</string>
+    <string name="setup_action_done">On</string>
+    <string name="setup_state_on">On</string>
+    <string name="setup_state_off">Off</string>
+    <string name="setup_close">Close</string>
+    <string name="setup_already_on">Already on — revoke it in Settings</string>
+    <string name="setup_note">Dim has no network access and cannot read your screen, clipboard or storage.</string>
+    <string name="setup_accessibility_hint">Open Settings → Accessibility → Downloaded apps → Dim.</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_method_label">LOCK METHOD</string>
+    <string name="settings_method_auto">Auto</string>
+    <string name="settings_method_auto_sub">Accessibility first, device admin as fallback</string>
+    <string name="settings_method_accessibility">Accessibility</string>
+    <string name="settings_method_accessibility_sub">Uses the global lock-screen action</string>
+    <string name="settings_method_admin">Device admin</string>
+    <string name="settings_method_admin_sub">Calls DevicePolicyManager.lockNow()</string>
+    <string name="settings_haptics">Haptics</string>
+    <string name="settings_haptics_sub">A soft tick when the ring is tapped</string>
+    <string name="settings_floating">Floating ball</string>
+    <string name="settings_floating_sub">Requires the accessibility service</string>
+    <string name="settings_revoke_admin">Revoke device admin</string>
+    <string name="settings_revoke_admin_sub">Accessibility keeps working afterwards</string>
+    <string name="settings_version">Dim 1.0.0 · targetSdk 34</string>
+    <string name="settings_about">A one-tap screen-off tool designed for Android 14</string>
+
+    <string name="tile_label">Dim</string>
+    <string name="tile_description">Tap to turn the screen off</string>
+    <string name="toast_no_method">Arm a lock method first</string>
+    <string name="toast_lock_failed">Could not turn the screen off — check the permission</string>
+    <string name="toast_tile_added">Tile added to Quick Settings</string>
+    <string name="toast_tile_exists">Tile is already there</string>
+    <string name="toast_tile_failed">Could not add the tile, edit Quick Settings manually</string>
+    <string name="toast_tile_unsupported">Not supported here, edit Quick Settings manually</string>
+    <string name="toast_admin_enabled">Device admin enabled</string>
+    <string name="toast_admin_revoked">Device admin revoked</string>
+
+    <string name="shortcut_short">Dim now</string>
+    <string name="shortcut_long">Dim now</string>
+    <string name="shortcut_disabled">Arm a lock method first</string>
+
+    <string name="dial_description">Screen-off button</string>
+    <string name="toast_floating_need_service">Accessibility is not connected, re-enable it in Settings</string>
+    <string name="revoke_title">Revoke device admin?</string>
+    <string name="revoke_message">The admin method stops working. Accessibility is unaffected.</string>
+    <string name="revoke_confirm">Revoke</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="accessibility_label">Dim (lock service)</string>
+    <string name="accessibility_description">Lets Dim perform the system lock-screen action from anywhere. The service never reads screen content and never collects or uploads data.</string>
+    <string name="admin_label">Dim · Device admin</string>
+    <string name="admin_description">Lets Dim lock the screen. Only the force-lock policy is used.</string>
+    <string name="admin_explanation">Dim needs the “lock screen” permission so a tap on the ring or tile can turn the display off immediately.</string>
+    <string name="admin_disable_warning">Without this, Dim cannot lock the screen through device admin.</string>
+    <string name="floating_description">Screen-off floating ball</string>
+    <string name="cd_settings">Settings</string>
+</resources>
